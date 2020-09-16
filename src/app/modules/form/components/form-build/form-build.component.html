@@ -1,1 +1,37 @@
-<p>form-build works!</p>
+<!-- formGroup permet de lier le formulaire à userProfileForm -->
+<form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+
+    <label>
+        Nom :
+        <!-- FormControlName permet de récupérer le paramètre du formGroup userProfileForm -->
+        <!-- ici : nom -->
+        <input type="text" formControlName="nom">
+    </label>
+
+    <label>
+        Prénom :
+        <input type="text" formControlName="prenom">
+    </label>
+
+    <!-- formGroupName permet de lier la div à notre "sous" formGroup-->
+    <div formGroupName="adresse">
+
+        <h3>Adresse</h3>
+
+        <label>Numéro :
+            <input type="text" formControlName="numero">
+        </label>
+
+        <label>Rue :
+            <input type="text" formControlName="rue">
+        </label>
+
+        <label>Code Postal :
+            <input type="text" formControlName="cp">
+        </label>
+
+    </div>
+
+    <!-- [disabled]="!userProfileForm.valid" permet de vérifier que le formulaire est valide pour activer le bouton -->
+    <button type=submit [disabled]="!userProfileForm.valid">Envoyer</button>
+</form>
