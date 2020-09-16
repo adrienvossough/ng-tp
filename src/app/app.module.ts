@@ -1,5 +1,5 @@
-import { PipeModule } from './pipe/pipe.module';
-import { FormModule } from './form/form.module';
+import { PipeModule } from './modules/pipe/pipe.module';
+import { FormModule } from './modules/form/form.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
