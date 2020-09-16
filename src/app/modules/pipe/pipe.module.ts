@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
-import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
+import { AsyncPipeComponent } from './components/async-pipe/async-pipe.component';
+import { CustomPipeComponent } from './components/custom-pipe/custom-pipe.component';
 import { PipeRoutingModule } from './pipe-routing.module';
 
 
