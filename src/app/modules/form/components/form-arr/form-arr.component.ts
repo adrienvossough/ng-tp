@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+//Importation de FormArray et FormBuilder
+import { FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-form-arr',
@@ -7,9 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormArrComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+  }
+
+  myTeamForm = this.fb.group({
+    //Création du tableau de membres
+    membres : this.fb.array([
+      //méthode pour remplir le tableau
+      this.fb.control('')
+    ])
+  });
+
+  //Méthodes qui retourne la liste des membres de myTeamForm
+  get members() {
+    return this.myTeamForm.get('membres') as FormArray;
+  }
+
+  addNewMember() {
+    //ajouter un nouveau membre à la liste 'members'
+    this.members.push(this.fb.control(''));
+  }
+
+  onSubmit() {
+    //Afficher tous les membres :
+    //console.log(this.myTeamForm.value);
+
+    //Afficher un membre en particulier :
+    console.log(this.myTeamForm.get(['membres', '0']).value);
   }
 
 }

@@ -1,1 +1,22 @@
-<p>form-arr works!</p>
+<form [formGroup]="myTeamForm" (ngSubmit)="onSubmit()">
+
+    <h3>Mon équipe :</h3>
+    
+    <!-- FormArrayName pour lier le paramètre 'membres' de myTeamForm-->
+    <div formArrayName="membres">
+
+        <!-- div : Boucle pour parcourir la liste des membres et pouvoir en ajouter un avec un index-->
+        <div *ngFor="let member of members.controls; let i = index">
+            <label>
+                Membre {{i+1}} :
+                <input type="text" [formControlName]="i">
+            </label>
+        </div>
+        <!-- Bouton pour ajouter un nouveau membre-->
+        <button (click)="addNewMember()">Ajouter un membre</button>
+
+    </div>
+
+    <!-- Bouton pour afficher les membres dans la console -->
+    <button type=submit>Inscription</button>
+</form>
