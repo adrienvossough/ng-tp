@@ -3,13 +3,12 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { PRODUCTS } from '../../mocks/products.mock';
 import { ProductService } from '../../services/product.service';
-
 import { AsyncPipeComponent } from './async-pipe.component';
 
 describe('AppComponent', () => {
   const spyProductService = jasmine.createSpyObj('productService', ['list']);
 
-  beforeEach(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
       ],

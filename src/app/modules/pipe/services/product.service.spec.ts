@@ -9,7 +9,7 @@ describe('Event Service tests', () => {
     let httpTestingController: HttpTestingController;
     let productService: ProductService;
 
-    beforeEach(() => {
+    beforeEach(async () => {
         // fake module / sandbox module
         TestBed.configureTestingModule({
             imports: [
@@ -43,20 +43,17 @@ describe('Event Service tests', () => {
     });
 
     // check component instance
-    it('should inject service', () => {
-        // use a spy to intercept httpclient requests
-        // let httpSpy = jasmine.createSpyObj('HttpClient', ['get']);
-        // httpSpy.get.and.returnValue([]);
+    it('should get values', () => {
 
-        // or use the mock
-        const req = httpTestingController.expectOne('http://localhost:3000/products');
-        expect(req.request.method).toBe('GET');
-        req.flush(PRODUCTS);
         // do request
         productService.list().subscribe((data) => {
             // check data
             expect(data).toEqual(PRODUCTS);
+
         });
+        const req = httpTestingController.expectOne('http://localhost:3000/products')
+        expect(req.request.method).toBe('GET');
+        req.flush(PRODUCTS);
     }
     );
 

@@ -10,5 +10,4 @@ export class ProductService extends ResourceService<number, Product> {
     constructor(private http: HttpClient) {
         super(http, 'products');
     }
-
 }

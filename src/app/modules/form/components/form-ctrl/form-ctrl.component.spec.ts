@@ -1,16 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { FormCtrlComponent } from './form-ctrl.component';
 
 describe('FormCtrlComponent', () => {
   let component: FormCtrlComponent;
   let fixture: ComponentFixture<FormCtrlComponent>;
+  let injector: TestBed;
+  let formBuilder: FormBuilder;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormCtrlComponent ]
+      declarations: [FormCtrlComponent],
+      providers: [FormBuilder]
     })
-    .compileComponents();
+      .compileComponents();
+    injector = getTestBed();
+    formBuilder = injector.inject(FormBuilder);
   });
 
   beforeEach(() => {

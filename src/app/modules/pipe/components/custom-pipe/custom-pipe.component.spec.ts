@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GetCharPipe } from 'src/app/pipes/getchar.pipe';
 
 import { CustomPipeComponent } from './custom-pipe.component';
 
@@ -8,9 +9,9 @@ describe('CustomPipeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomPipeComponent ]
+      declarations: [CustomPipeComponent, GetCharPipe]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
