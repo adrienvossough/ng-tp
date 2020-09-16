@@ -1,3 +1,15 @@
+<label>Tous</label>
 <ul>
     <li *ngFor="let p of products$ | async">{{p.name}} : {{p.price| currency: 'EUR'}}</li>
+</ul>
+
+<label>Cher</label>
+<ul>
+    <li *ngFor="let p of productsExpensiveShareReplay$ | async">{{p.name}} :
+        {{p.price| currency: 'EUR'}}</li>
+</ul>
+<label>Pas cher</label>
+<ul>
+    <li *ngFor="let p of productsCheapShareReplay$ | async">{{p.name}} :
+        {{p.price| currency: 'EUR'}}</li>
 </ul>

@@ -21,18 +21,16 @@ export class AsyncPipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadWithResourcePatternService();
-    // this.loadWithShareReplayAsync();
-    // this.loadWithShareReplaySubscribe();
+    this.loadWithShareReplayAsync();
   }
 
-  loadWithResourcePatternService() {
+  loadWithResourcePatternService(): void {
     // async
     this.products$ = this.productService.list();
-    console.log(this.products$)
   }
 
 
-  loadWithShareReplayAsync() {
+  loadWithShareReplayAsync(): void {
     this.productsShareReplay$ = this.productService.list().pipe(
       shareReplay(1)
     );
@@ -41,29 +39,9 @@ export class AsyncPipeComponent implements OnInit {
       map(products => products.filter(p => p.price >= 10))
     );
 
-    this.productsExpensiveShareReplay$ = this.productsShareReplay$.pipe(
+    this.productsCheapShareReplay$ = this.productsShareReplay$.pipe(
       map(products => products.filter(p => p.price <= 10))
     );
   }
-
-  loadWithShareReplaySubscribe() {
-    const productsReplay = this.productService.list().pipe(
-      shareReplay(1)
-    );
-
-    const productsExpensiveReplay = productsReplay.pipe(
-      map(products => products.filter(p => p.price >= 10))
-    );
-
-    const productsCheapReplay = productsReplay.pipe(
-      map(products => products.filter(p => p.price <= 10))
-    );
-
-    productsReplay.subscribe((r) => console.log(r));
-    productsExpensiveReplay.subscribe((r) => console.log(r));
-    productsCheapReplay.subscribe((r) => console.log(r));
-  }
-
-
 }
 
