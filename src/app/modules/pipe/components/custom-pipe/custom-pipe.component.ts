@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./custom-pipe.component.css']
 })
 export class CustomPipeComponent implements OnInit {
+  text = 'Coucou';
 
   constructor() { }
 
