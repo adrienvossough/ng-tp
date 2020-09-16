@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
+import { PipeRoutingModule } from './pipe-routing.module';
 
 
 
@@ -11,7 +12,8 @@ import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
     CustomPipeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    PipeRoutingModule
   ]
 })
 export class PipeModule { }

@@ -11,9 +11,9 @@ const routes: Routes = [
   {
     path: 'pipes',
     loadChildren: () => import('./modules/pipe/pipe.module').then(m => m.PipeModule),
-    data: {
-      preload: false
-    },
+    // data: {
+    //   preload: false
+    // },
   },
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
