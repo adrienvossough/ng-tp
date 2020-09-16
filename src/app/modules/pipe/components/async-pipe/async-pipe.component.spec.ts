@@ -1,25 +1,50 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { PRODUCTS } from '../../mocks/products.mock';
+import { ProductService } from '../../services/product.service';
 
 import { AsyncPipeComponent } from './async-pipe.component';
 
-describe('AsyncPipeComponent', () => {
-  let component: AsyncPipeComponent;
-  let fixture: ComponentFixture<AsyncPipeComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AsyncPipeComponent ]
-    })
-    .compileComponents();
-  });
+describe('AppComponent', () => {
+  const spyProductService = jasmine.createSpyObj('productService', ['list']);
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AsyncPipeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      imports: [
+      ],
+      declarations: [
+        AsyncPipeComponent
+      ],
+      providers: [
+        {
+          provide: ProductService,
+          useValue: spyProductService
+        }
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
+    }).compileComponents();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create the app and get component instance', () => {
+    const fixture = TestBed.createComponent(AsyncPipeComponent);
+    const plist = fixture.debugElement.componentInstance;
+    expect(plist).toBeTruthy();
   });
+
+  it('should initialize products', () => {
+    // comp instance
+    const fixture = TestBed.createComponent(AsyncPipeComponent);
+    const plist = fixture.debugElement.componentInstance;
+    // list() call
+    spyProductService.list.and.returnValue(of(PRODUCTS));
+    // call method
+    plist.loadWithResourcePatternService();
+    // check result
+    plist.products$.subscribe((r) => {
+      expect(r).toEqual(PRODUCTS);
+    });
+  });
+
+
 });
