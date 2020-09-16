@@ -1,1 +1,35 @@
-<p>form-ctrl works!</p>
+<!-- PREMIER FORMULAIRE -->
+<form [formGroup]="userProfileForm" (ngSubmit)="onSubmitFirst()">
+
+    <h3>Premier formulaire</h3>
+
+    <label>
+        Nom :
+        <input type="text" formControlName="nom">
+    </label>
+
+    <label>
+        Prénom :
+        <input type="text" formControlName="prenom">
+    </label>
+
+    <button type=submit [disabled]="!userProfileForm.valid">Mettre à jour</button>
+</form>
+
+<!-- SECOND FORMULAIRE -->
+<form [formGroup]="newUserProfileForm" (ngSubmit)="onSubmitSecond()">
+
+    <h3>Second formulaire</h3>
+
+    <label>
+        Nom :
+        <input type="text" formControlName="nom">
+    </label>
+
+    <label>
+        Prénom :
+        <input type="text" formControlName="prenom">
+    </label>
+
+    <button type=submit [disabled]="!userProfileForm.valid">Envoyer en console</button>
+</form>
