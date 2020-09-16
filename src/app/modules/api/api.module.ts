@@ -8,8 +8,5 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     exports: [
         HttpClientModule
     ],
-    providers: [
-
-    ]
 })
 export class ApiModule { }
