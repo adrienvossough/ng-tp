@@ -1,10 +1,30 @@
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'forms',
+    loadChildren: () => import('./modules/form/form.module').then(m => m.FormModule)
+  },
+  {
+    path: 'pipes',
+    loadChildren: () => import('./modules/pipe/pipe.module').then(m => m.PipeModule),
+    data: {
+      preload: false
+    },
+  },
+  { path: '', redirectTo: '/forms', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent }
+
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    QuicklinkModule,
+    RouterModule.forRoot(routes, { preloadingStrategy: QuicklinkStrategy })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
