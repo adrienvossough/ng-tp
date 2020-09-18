@@ -15,6 +15,10 @@ const routes: Routes = [
     //   preload: false
     // },
   },
+  {
+    path: 'detection',
+    loadChildren: () => import('./modules/detection/detection.module').then(m => m.DetectionModule)
+  },
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 

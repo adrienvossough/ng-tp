@@ -1,3 +1,4 @@
+import { DetectionModule } from './modules/detection/detection.module';
 import { PipeModule } from './modules/pipe/pipe.module';
 import { FormModule } from './modules/form/form.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +19,8 @@ import { ApiModule } from './modules/api/api.module';
     PipeModule,
     BrowserModule,
     AppRoutingModule,
-    ApiModule
+    ApiModule,
+    DetectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
